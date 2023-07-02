@@ -1,0 +1,7 @@
+.ui-card{
+    padding:3%;
+    background-color: rgb(16, 16, 16);
+    border-radius: 0.5rem;
+    display: flex;
+    flex-wrap:wrap ;
+}

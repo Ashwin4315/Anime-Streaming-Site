@@ -1,0 +1,8 @@
+.ui-button {
+    padding: 0.3rem 1.5rem;
+    background-color: rgb(3, 173, 99);
+    color: white;
+    border-radius: 2rem;
+    border: none;
+    cursor: pointer;
+}
