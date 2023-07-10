@@ -141,6 +141,8 @@ function Search() {
                             padding: "0.5rem 0.7rem"
 
                         }}
+                        onClick={handleClick}
+
                     >
                         <span
                             style={{ color: "white", fontWeight: "bolder" }}
