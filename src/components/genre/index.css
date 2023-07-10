@@ -1,0 +1,36 @@
+.genre-container {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    gap: 1rem;
+    
+}
+.genre-container div{
+    display: flex;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+  
+}
+
+@media only screen and (max-width: 1000px) {
+    .genre-container div{
+        gap: 0.7rem;
+        height: 10rem;
+        overflow-y: scroll;
+
+    }
+    
+}
+@media only screen and (max-width: 500px) {
+    .genre-container div{
+        gap: 1rem;
+      justify-content: space-around;
+    }
+    .genre-container button{
+        width: 45%!important;
+        border-radius: 0.4rem;
+        text-align: left!important;
+        padding: 0.2rem 0.4rem;
+    }
+    
+}

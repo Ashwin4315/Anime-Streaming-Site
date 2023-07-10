@@ -27,6 +27,12 @@ export type searchProps = {
     }]
 
 }
+export type filterdProps = {
+        [key:string]:string
+       
+    }
+
+
 
 export type SeverProps = {
 

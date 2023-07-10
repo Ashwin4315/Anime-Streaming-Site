@@ -23,6 +23,16 @@ outline: none;
     justify-content: center;
 }
 
+
+.search-filter-con{
+    display: flex;
+    text-align: left;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+.search-results-container{
+    padding-top: 4rem;
+}
 @media only screen and (max-width: 800px) {
     .search-form-container input{
         width: 70%;
