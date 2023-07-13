@@ -1,5 +1,5 @@
 {
-  "homepage": "http://Ashwin4315.github.io/react-app",
+  "homepage":" http://Ashwin4315.github.io/Anime-Streaming-Site",
   "name": "typescript-learn",
   "version": "0.1.0",
   "private": true,
@@ -20,8 +20,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "predeploy":"npm run build",
-    "deploy":"gh-pages--d-build",
+    "predeploy" : "npm run build",
+    "deploy" : "gh-pages -d build",    
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
