@@ -1,5 +1,30 @@
-.home-container{
+.home-container {
     background-color: black;
+}
+
+.home-btn-container {
+    margin-top: 3rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 3%;
+}
+
+.home-btn-container div {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+.home-btn-container button {
+    background-color: transparent;
+    font-size: 1rem;
+    width: auto !important;
+    padding: 0rem;
+}
+
+
+.home-btn-container button:hover {
+    color: rgb(3, 173, 99);
 }
 
 @media only screen and (max-width: 800px) {
@@ -8,5 +33,15 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-    } 
+    }
+
+    .home-btn-container {
+        font-size: 0.8rem;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .home-btn-container div {
+        justify-content: flex-end;
+    }
 }

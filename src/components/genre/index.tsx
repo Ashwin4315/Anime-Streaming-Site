@@ -26,9 +26,8 @@ function Genre({ onget }: genreProps) {
     useEffect(() => {
         onget(includeGenre)
 
-    }, [includeGenre])
+    }, [includeGenre,onget])
 
-    // console.log(includeGenre)
     return (
 
         <div className="genre-container">

@@ -9,7 +9,6 @@ import "./index.css"
 import Card from '../../components/UI/Card';
 import Select from '../../components/Select';
 import { choose, rated, status, type, year } from '../../constants/filter';
-import { types } from 'util';
 
 
 
@@ -103,7 +102,6 @@ function Search() {
     }
     const filterSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        console.log(e)
         setfilter({ genres: genre, type: state.type, status: state.status, rating: state.rated, order: state.choose, year: state.year })
 
     }

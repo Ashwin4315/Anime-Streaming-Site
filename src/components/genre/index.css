@@ -26,6 +26,7 @@
         gap: 1rem;
       justify-content: space-around;
     }
+    
     .genre-container button{
         width: 45%!important;
         border-radius: 0.4rem;

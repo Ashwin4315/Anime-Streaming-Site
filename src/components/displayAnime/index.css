@@ -30,6 +30,8 @@
     cursor: pointer;
     border-radius: 0rem;
     overflow: hidden;
+    user-select: none; 
+
 }
 
 .display-anime-content   {
@@ -41,7 +43,51 @@
 .display-anime-img {
     width: 100%;
     height: 23rem;
+    cursor: pointer;
+    position: relative;
 
+}
+
+.display-anime-img::after{
+    position: absolute;
+    content: "";
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    background-image: url("https://img.icons8.com/ios-glyphs/60/000000/play--v1.png");
+    background-repeat: no-repeat;
+    filter: brightness(0) invert(1);
+    background-size:3rem;
+    background-position: center;
+    opacity: 0;
+    
+}
+.display-anime-img::before{
+    position: absolute;
+    content: "";
+    top:0;
+    left:0;
+    right:0;
+    bottom: 0;
+    background-image: linear-gradient(0deg,#121213 0,rgba(42,44,49,0) 96%);
+    background-size:3rem;
+    opacity: 0;
+
+    
+}
+.display-anime-img:hover::after{
+ opacity: 1;  
+ transition: 0.3s;
+}
+.display-anime-img:hover::before{
+    opacity: 1;  
+    transition: 0.3s;
+}
+
+.display-anime-img:hover{
+
+ z-index: 9999;
 }
 
 .display-anime-card img {
@@ -56,13 +102,37 @@
     padding: 2%;
 
 }
+.display-anime-card section {
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    color: rgb(207, 206, 206);
+}
+.display-search-con{
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.8rem;
+    font-weight: 500;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    color: rgb(207, 206, 206);
+}
 
 @media only screen and (max-width: 800px) {
     .display-anime-card {
-        width: 10rem;
+        width: 10.6rem;
 
         
     }
+    .display-anime-container {
+        justify-content: space-between;
+        gap:0.5rem;
+    }
+    
     .display-anime-img {
         height: 15rem;
     
@@ -74,6 +144,9 @@
 
         
     }
+    
+
+ 
     .display-anime-img {
         height: 13rem;
     

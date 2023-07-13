@@ -8,6 +8,7 @@ import Loader from "../../components/loader";
 import Button from "../../components/UI/Button";
 import "./index.css"
 
+
 function Details() {
 
     const btnref = useRef<null|HTMLDivElement>( null);
@@ -16,8 +17,9 @@ function Details() {
     const location = useLocation();
     const { state } = location;
 
-    const [anime, loading] = useGetInfo<animeInfoProps>(`https://api.consumet.org/anime/gogoanime/info/${id}`)
+    const [anime, loading] = useGetInfo<animeInfoProps>(`https://api.consumet.org/anime/gogoanime/info/${state?.episodeNumber===undefined?id:state?.id}`)
     const [sanime, sloading] = useGetInfo<searchProps>(`https://api.consumet.org/anime/gogoanime/${searchConverter(id as string)}`)
+
     // const [sanime, sloading, serror] = useGetInfo<searchProps>(`https://api.consumet.org/anime/gogoanime/recent-episodes?page=2`)
 
     const handleClick = () => {

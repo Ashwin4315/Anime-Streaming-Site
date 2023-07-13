@@ -394,3 +394,24 @@ export const genre = [
 
   }
 ]
+
+
+export const show =[{
+  name:"Sub",
+  url:"https://api.consumet.org/anime/gogoanime/recent-episodes?type=1&"
+},
+{
+    name:"Dub",
+    url:"https://api.consumet.org/anime/gogoanime/recent-episodes?type=2&"
+},
+ {
+  name:"Trending",
+  url:"https://api.consumet.org/anime/gogoanime/top-airing?",
+  
+},
+{
+  name:"Chinese",
+  url:"https://api.consumet.org/anime/gogoanime/recent-episodes?type=3&"
+
+}
+]
