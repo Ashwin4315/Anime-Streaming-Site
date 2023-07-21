@@ -1,0 +1,84 @@
+.popular-anime-card-container{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+ 
+}
+.popular-anime-card-title h2{
+    color: rgb(3, 173, 99);
+
+}
+
+.popular-anime-card-content-container{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(12, 12, 12);
+    padding: 6%;
+    overflow-y: scroll;
+
+
+}
+
+.popular-anime-card-card{
+    display: flex;
+
+    gap: 1rem;
+    padding:  4% 0%;
+    border-bottom: 1px solid rgb(89, 91, 90);
+}
+
+.popular-anime-card-card:last-child{
+    border: none;
+
+}
+.popular-anime-card-img img{
+    width: 5rem;
+    height: 7rem;
+}
+
+.popular-anime-card-content{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.popular-anime-card-card-title h2{
+    font-size: 0.9rem;
+    font-weight: bolder;
+    cursor: pointer;
+    color: rgb(210, 211, 211);
+
+
+}
+.popular-anime-card-card-title h2:hover{
+    color: var(--primary-color);
+
+}
+.popular-anime-card-card-title h2:hover{
+    color: rgb(3, 173, 99);
+
+}
+
+.popular-anime-card-info{
+    display: flex;
+    gap: 1rem;
+    color:rgb(162, 158, 158);
+    font-size: 0.8rem;
+}
+
+.popular-anime-card-content-container::-webkit-scrollbar {
+    width: 1px;
+  }
+  
+  .popular-anime-card-content-container ::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+  }
+   
+
+  .popular-anime-card-content-container::-webkit-scrollbar-thumb {
+    background: #888; 
+  }
+  
+  .popular-anime-card-content-container::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+  }

@@ -7,20 +7,29 @@ function Header() {
 
     const [show, setShow] = useState(false)
 
-    const showPress=()=>{
+    const showPress = () => {
         setShow(!show)
     }
 
     return (
         <header className='header-main-container'>
             <div className='header-container'>
-                <div style={{display:"flex",alignItems:"center",gap:"1rem"}}>
-                    <span
-                    style={{cursor:"pointer"}}
-                    onClick={showPress}
-                     className="material-symbols-outlined">
-                        menu
-                    </span>
+                <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+                    <div
+                    style={{ display: "flex", alignItems: "center"}}
+                        onClick={showPress}
+                    >
+                        {show ? <span
+                            style={{ color:"white",fontWeight:"bolder" }}
+                            className="material-symbols-outlined">
+                            close
+                        </span> : <span
+                            style={{ cursor: "pointer",fontWeight:"bolder" }}
+
+                            className="material-symbols-outlined">
+                            menu
+                        </span>}
+                    </div>
                     <h1
                         style={{ color: "aliceblue", fontSize: "1.5rem", fontFamily: 'Bagel Fat One', fontWeight: "400" }}
                     >ASH<span
@@ -38,7 +47,7 @@ function Header() {
                     </Link></li>
                 </ul>
             </div>
-            { show && <Menu  show={showPress}/> }
+            {show && <Menu show={showPress} />}
         </header>
 
     );

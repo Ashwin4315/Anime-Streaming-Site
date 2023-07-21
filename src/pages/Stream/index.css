@@ -7,7 +7,7 @@
 .watch{
     width: 100%;
     display: block;
-    padding: 6%;
+    padding: 4%;
 
 
 }
@@ -68,6 +68,50 @@ iframe {
     flex-wrap:wrap;
 
 }
+.Recommended-card{
+    display: none;
+}
+
+.subordub {
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+    position: relative;
+    margin-bottom: 1rem; 
+    margin-top: 1rem; 
+    font-size: 0.8rem;   
+
+}
+.subordub section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 6rem;
+    border: 1px solid rgb(70, 69, 69);
+    background-color: transparent;
+    cursor: pointer;
+
+   
+}
+.subordub-changer{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(30, 29, 29);
+    width: 6rem;
+    position: absolute;
+    top: 1.6rem;
+}
+
+.subordub button{
+   background-color:transparent;
+   color: rgb(149, 152, 151);
+   border-radius: 0; 
+}
+.displaynone{
+    display: none;
+}
+
 
 @media screen and (max-width: 480px){
 .watch {
@@ -82,6 +126,12 @@ iframe {
     padding: 0.1rem;
     flex-wrap:wrap;
 
+}
+.Recommended-card{
+display: block;
+}
+.Recommended-display{
+display: none;
 }
 }
 

@@ -25,13 +25,25 @@ function Menu({ show }: { show: () => void }) {
                     >Genre</li>
                     <li
                       onClick={()=>{
-                        navigate("/about")
+                        navigate("/display/Movies",{state:"https://api.jikan.moe/v4/anime?type=movie&"})
                         show()
                        }}
-                    >About</li>
+                    >Movies</li>
                     <li
                       onClick={()=>{
-                        navigate("/about")
+                        navigate("/display/Upcoming",{state:"https://api.jikan.moe/v4/seasons/upcoming?"})
+                        show()
+                       }}
+                    >Upcoming</li>
+                    <li
+                      onClick={()=>{
+                        navigate("/display/Popular",{state:"https://api.jikan.moe/v4/top/anime?filter=bypopularity&"})
+                        show()
+                       }}
+                    >Popular Anime</li>
+                    <li
+                      onClick={()=>{
+                        navigate("/favorite")
                         show()
                        }}
                     >Favorates</li>

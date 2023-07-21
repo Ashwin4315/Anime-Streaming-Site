@@ -50,8 +50,10 @@ const componentRef = useRef<null | HTMLDivElement>(null)
                                             <p>Status: {anime?.status}</p>
                                             <p>Duration: {anime?.duration}</p>
                                         </div>
+                                        <div className='description'>
                                         <span >Description</span>
                                         {anime?.synopsis===null?<p>Watch The Latest Episode on Logo</p>:<p >{StringConvertFunction(anime?.synopsis,300)}</p>}
+                                        </div>
                                         <Button
                                             onClick={() => { navigate(`/detail/${converter(anime?.url)}`, { state: anime }) }}
 

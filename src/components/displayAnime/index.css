@@ -122,7 +122,7 @@
     color: rgb(207, 206, 206);
 }
 
-@media only screen and (max-width: 800px) {
+/* @media only screen and (max-width: 800px) {
     .display-anime-card {
         width: 10.6rem;
 
@@ -144,14 +144,37 @@
 
         
     }
-    
-
- 
     .display-anime-img {
         height: 13rem;
     
     }
+} */
+
+@media screen and (max-width: 470px){
+  .display-anime-card {
+        width: calc(50% - 1rem)!important;
+
+    }
+    .display-anime-img {
+        height: 13rem;
+    
+    }
+    .display-anime-container {
+        justify-content: space-around;
+    }
+    
 }
 
-  
+@media screen and (max-width: 1050px){
+  .display-anime-card {
+        width: calc(33.33% - 1rem);
+
+    }
+    .display-anime-img {
+        height: 15rem;
+    
+    }
+      
+}
+
  

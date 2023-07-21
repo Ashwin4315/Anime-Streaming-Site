@@ -6,12 +6,23 @@ export function converter(url: string): string {
     const conStr = cconStr.replace(/____|___|__|_/g, "-").toLowerCase();
     return conStr
 }
+ export function subOrDub(id: string) {
+    let Arr = id.split("-dub")[0];
+    return Arr 
+     }
 
  export function searchConverter(url: string): string {
 
     const str = url.replace(/[^a-zA-Z0-9]/g, ' ')
+    const isepisode = (element) => element ==="episode";
     let Arr = str.split(" ");
+    let slicer= Arr.findIndex(isepisode)
+    if(slicer !== -1){
+        Arr=Arr.slice(0,slicer)
+    }
 
+
+     
     let conStr: string;
     if (Arr[1] === undefined) {
         conStr = Arr[0]

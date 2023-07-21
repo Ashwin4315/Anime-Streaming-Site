@@ -11,9 +11,6 @@ import Select from '../../components/Select';
 import { choose, rated, status, type, year } from '../../constants/filter';
 
 
-
-
-
 interface filterAction {
     type: string;
     payload: string;
@@ -76,12 +73,6 @@ function Search() {
         year: "",
         choose: ""
     });
-
-
-
-
-
-
 
     const inputSearchAnime = (e: React.ChangeEvent<HTMLInputElement>) => {
         setinputSearch(e.target.value)
@@ -155,19 +146,19 @@ function Search() {
                         style={{ marginTop: "1.5rem",padding:"2rem 3%", flexDirection: "column", gap: "2rem" }}
                     >
                         <div className='search-filter-con'>
-                            <div>
+                            <section>
                                 <Select onset={getFilter} to="type" options={type} />
                                 <Select onset={getFilter} to="status" options={status} />
-                            </div>
-                            <div>
+                            </section>
+                            <section>
                                 <Select onset={getFilter} to="rated" options={rated} />
                                 <Select onset={getFilter} to="choose" options={choose} />
 
-                            </div>
-                            <div>
+                            </section>
+                            <section>
                                 <Select onset={getFilter} to="year" options={year} />
 
-                            </div>
+                            </section>
 
                         </div>
                         <Genre onget={getGenre} />

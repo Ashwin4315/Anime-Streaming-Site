@@ -1,0 +1,29 @@
+.genre-display-main-container{
+    margin-bottom: 1rem;
+    
+}
+.genre-display-main-container h2{
+    color: rgb(3, 173, 99);
+     margin-bottom: 1rem;
+    
+}
+
+.genre-display-types{
+    background-color: rgb(12, 12, 12);
+    padding: 5%;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.genre-display-types button{
+    background-color: transparent;
+    color: aliceblue;
+    border:none;
+    text-align: start;
+    margin:0.3rem;
+    cursor: pointer;
+}
+.genre-display-types button:hover{
+    color: rgb(3, 173, 99);
+   
+}

@@ -23,7 +23,7 @@ function DisplayGogo({ anime, title }: any) {
                     return (
                         <div 
                             key={index}
-                            className="display-anime-card"
+                            className="display-gogo-anime-card"
                             onClick={() => {
                                  navigate(`/detail/${converter(animeShow.url)}`, { state: animeShow })
                                  window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
@@ -31,10 +31,10 @@ function DisplayGogo({ anime, title }: any) {
                                  }}
 
                         >
-                            <div className="display-anime-img">
+                            <div className="display-gogo-anime-img">
                                 <img src={animeShow?.image}  alt={animeShow?.title}/>
                             </div>
-                            <div className="display-anime-content">
+                            <div className="display-gogo-anime-content">
                                 <h3>{animeShow?.title}</h3>
                             </div>
                         </div>

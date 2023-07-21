@@ -10,6 +10,8 @@
     display: flex;
     gap: 3rem;
     padding: 10% 6%;
+    background: linear-gradient(to right bottom, #151414, #000000, rgb(1, 30, 17), rgb(3, 173, 99));
+
 }
 
 .detail-info-container::after {
@@ -75,12 +77,30 @@
     color: rgb(3, 173, 99);
 }
 
+.toast-message {
+    background: black;
+    color: #fff;
+    font-size: 20px;
+    width: 34vw;
+    padding: 10px 10px;
+}
+
+.toast-remove-message {
+    background: black;
+    color: #fff;
+    font-size: 20px;
+    width: 40vw;
+    padding:10px 5px 10px 0px ;
+}
 .detail-similar {
     background-color: #000000;
     display: flex;
 
 }
-
+.toast {
+        
+   margin-bottom: 3rem;
+}
 
 @media only screen and (max-width: 800px) {
     .detail-info-container {
@@ -103,4 +123,28 @@
     .detail-info-container::after {
         background: linear-gradient(to right bottom, #151414, #000000, rgb(1, 30, 17), rgb(1, 99, 56));
     }
+    .toast-message {
+        
+        background: black;
+        color: #fff;
+        font-size: 1rem;
+        width: 70vw;
+        padding: 10px 10px;
+        margin-right: 8rem!important;
+
+    }
+    .toast-remove-message {
+        width: 100vw;
+        font-size: 1rem;
+        margin-right: 8rem!important;
+        display: block;
+        padding: 10px 0px;
+        padding-right: 3px;
+
+    }
+    .toast {
+        margin-left: 7.5rem;
+
+
+     }
 }

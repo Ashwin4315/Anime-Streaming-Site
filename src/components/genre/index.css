@@ -11,6 +11,13 @@
     flex-wrap: wrap;
   
 }
+.genre-container button:hover{
+   
+    background-color: rgba(99, 97, 98, 0.2)!important;
+     color: rgb(3, 173, 99)!important;
+
+}
+
 
 @media only screen and (max-width: 1000px) {
     .genre-container div{
@@ -19,6 +26,7 @@
         overflow-y: scroll;
 
     }
+   
     
 }
 @media only screen and (max-width: 500px) {
@@ -32,6 +40,12 @@
         border-radius: 0.4rem;
         text-align: left!important;
         padding: 0.2rem 0.4rem;
+    }
+    .genre-container button:hover{
+   
+        background-color:#191919!important;
+         color: #979896!important;
+    
     }
     
 }

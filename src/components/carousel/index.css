@@ -54,8 +54,9 @@
     gap: 1rem;
     padding-top: 1rem;
 }
-.carousel-con h2{
-   font-size: 1.4rem!important;
+
+.carousel-con h2 {
+    font-size: 1.4rem !important;
 }
 
 .carousel-type {
@@ -74,8 +75,9 @@
 
 @media only screen and (max-width: 800px) {
     .content {
-        backdrop-filter: brightness(30%);
+        backdrop-filter: none;
         padding: 1rem;
+        background-image: linear-gradient(to right, rgba(0, 0, 0, 1) 0, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.1));
     }
 
     .content p {
@@ -90,6 +92,12 @@
         gap: 0.6rem;
     }
 
+    .carousel-content img {
+    
+        object-position: center!important;
+        object-fit: contain!important;
+    }
+
 
 
     .carousel-img-con {
@@ -101,12 +109,15 @@
     }
 
     .carousel-container {
-        height: 50vh;
+        height: 33vh;
 
     }
 
     .carousel .slide {
         text-align: left !important;
 
+    }
+    .description{
+        display: none;
     }
 }
