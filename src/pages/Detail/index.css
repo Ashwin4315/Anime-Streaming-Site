@@ -134,16 +134,18 @@
 
     }
     .toast-remove-message {
-        width: 100vw;
         font-size: 1rem;
+        width: 18rem!important;
         margin-right: 8rem!important;
         display: block;
         padding: 10px 0px;
-        padding-right: 3px;
+        padding-right: 4px!important;
 
     }
     .toast {
-        margin-left: 7.5rem;
+        margin-left: 5rem;
+        width: 100rem!important;
+
 
 
      }

@@ -159,7 +159,7 @@ function Stream() {
                             }
                             }
                         >
-                            <p> Enable <span style={{ color: "black", fontWeight: "bolder" }}>Ads blocker</span> in your browser setting or use <span style={{ color: "black", fontWeight: "bolder" }}>Brave browser</span> to avoid adds popup or redirects </p>
+                            <p> Enable <span style={{ color: "black", fontWeight: "bolder" }}>Add blocker</span> in your browser setting or use <span style={{ color: "black", fontWeight: "bolder" }}>Brave browser</span> to avoid add popup or redirects </p>
                         </Card>
                         <div className="stream-content-container">
                             <h2>Episodes</h2>
@@ -191,7 +191,7 @@ function Stream() {
                                             {language?.id === undefined ? "" : <Button
                                                 onClick={() => {
                                                     setbuttons(language?.episodes)
-                                                    setlang(lang === "sub" ? "dub" : "sub")
+                                                    setlang(location.state.anime.subOrDub === "sub" ? "dub" : "sub")
                                                     settoggle(!toggle)
                                                 }}
                                             >{location.state.anime.subOrDub === "sub" ? "dub" : "sub"}</Button>}

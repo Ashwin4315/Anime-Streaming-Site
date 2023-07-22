@@ -34,7 +34,7 @@ function Details() {
     const dispatch = useAppDispatch();
     const favorites = useAppSelector((state: RootState) => state.favorite)
     const [anime, loading] = useGetInfo<animeInfoProps>(`https://api.consumet.org/anime/gogoanime/info/${state?.episodeNumber === undefined ? id : state?.id}`)
-    const [sanime] = useGetInfo<searchProps>(`https://api.consumet.org/anime/gogoanime/${searchConverter(id as string)}?page=${page}`)
+    const [sanime,sloading] = useGetInfo<searchProps>(`https://api.consumet.org/anime/gogoanime/${searchConverter(id as string)}?page=${page}`)
 
     const handleClick = () => {
         btnref.current?.scrollIntoView({ behavior: 'smooth' }) as any;
@@ -98,13 +98,13 @@ function Details() {
 
                         <div className="detail-image">
                             <div className="detail-img">
-                                <img src={anime?.image === undefined ? state?.images?.jpg.image_url : anime?.image} alt={anime?.title} />
+                                <img src={anime?.image === undefined ? state?.images?.jpg.image_url===undefined?state?.attributes?.posterImage.original :state?.images?.jpg.image_url: anime?.image} alt={anime?.title} />
                             </div>
                         </div>
 
                         <div className="detail-content">
                             <div className="detail-title">
-                                <h2>{state.title === undefined ? anime?.title : state?.title}</h2>
+                                <h2>{state.title === undefined ? anime?.title===undefined?state?.attributes?.canonicalTitle:anime?.title: state?.title}</h2>
                                 <div className="detail-type">
                                     <div>
 
@@ -167,16 +167,16 @@ function Details() {
                                         className={"toast"} />
 
                                     <div className="detail-description">
-                                        <p><span>Title:</span> {state.title === undefined ? anime?.title : state.title}</p>
-                                        <p><span>Type:</span> {state.type === undefined ? anime?.type : state.type}</p>
+                                        <p><span>Title:</span> {state.title === undefined ? anime?.title===undefined?state?.attributes?.canonicalTitle:anime?.title: state?.title}</p>
+                                        <p><span>Type:</span> {state.type === undefined ? anime?.type===undefined?state?.attributes?.subtype:anime?.type : state.type}</p>
                                         {state.duration === undefined ? "" : <p><span>Duration:</span> {state.duration}</p>}
-                                        <p><span>Episodes:</span> {state.episodes === undefined ? anime?.totalEpisodes : state.episodes}</p>
+                                        <p><span>Episodes:</span> {state.episodes === undefined ? anime?.totalEpisodes===undefined?state?.attributes?.episodeCount:anime?.totalEpisodes : state.episodes}</p>
                                         {state.score === undefined ? "" : <p><span>Score:</span> {state.score}</p>}
-                                        <p><span>Status:</span> {state?.status === undefined ? anime?.status : state?.status}</p>
+                                        <p><span>Status:</span> {state?.status === undefined ? anime?.status===undefined?state?.attributes?.status:anime?.status  : state?.status}</p>
                                     </div>
 
                                     {anime?.subOrDub === undefined ? "" : <p><span>Dubbing:</span> {anime?.subOrDub}</p>}
-                                    <p><span>Realease:</span> {anime?.releaseDate === undefined ? state?.aired?.string : anime?.releaseDate}</p>
+                                    <p><span>Realease:</span> {anime?.releaseDate === undefined ? state?.aired?.string===undefined?state?.attributes?.startDate:state?.aired?.string  : anime?.releaseDate}</p>
 
 
                                     <div className="detail-genre">
@@ -187,17 +187,17 @@ function Details() {
                             </div>
                             <div className="detail-description" >
                                 <h3>Description</h3>
-                                <p>{state.synopsis === undefined ? anime?.description : state?.synopsis}</p>
+                                <p>{state.synopsis === undefined ? anime?.description ===undefined?state?.attributes?.description:anime?.description : state?.synopsis}</p>
                             </div>
                         </div>
                     </div>
 
-                    <div className="detail-similar" ref={btnref} >
+                   {sloading?<Loader/>: <div className="detail-similar" ref={btnref} >
                         {search?.[0] === undefined ?
                             <p style={{ textAlign: "center", fontSize: "2rem", marginBottom: "5rem", width: "100%", marginTop: "3rem" }}>No result found</p> :
                             <DisplayGogo title="Similar anime" anime={search} />
                         }
-                    </div>
+                    </div>}
 
                 </>
             }

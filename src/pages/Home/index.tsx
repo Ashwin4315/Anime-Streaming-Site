@@ -1,5 +1,5 @@
 import useGetInfo from '../../hooks/useGetInfo';
-import { jikenProps, searchProps } from '../../types';
+import { jikenProps, kitsu, searchProps } from '../../types';
 import Carousel from '../../components/carousel';
 import DisplayAnime from '../../components/displayAnime';
 import Loader from '../../components/loader';
@@ -10,6 +10,7 @@ import { show } from '../../constants/filter';
 import DisplayTop from '../../components/displayTop';
 import GenreDisplay from '../../components/genreDisplay';
 import Footer from '../../components/footer';
+import Card from '../../components/UI/Card';
 
 
 function Home() {
@@ -18,15 +19,15 @@ function Home() {
     const [selbtn, setselbtn] = useState(0)
     const [page, setPage] = useState<number>(1)
     const [airing, aloading] = useGetInfo<jikenProps>("https://api.jikan.moe/v4/seasons/now")
+    const [trending] = useGetInfo<kitsu>("https://kitsu.io/api/edge/trending/anime?filter[status]=current&sort=popularityRank")
     const [anime, alloading] = useGetInfo<searchProps>(`${url}page=${page}`)
-    const [top] = useGetInfo<searchProps>(`https://api.consumet.org/anime/gogoanime/top-airing`)
     const display = useRef<null | HTMLDivElement>(null);
 
 
-  const handleClick = () => {
-    display.current?.scrollIntoView({ behavior: 'smooth' }) as any;
-};
-    
+    const handleClick = () => {
+        display.current?.scrollIntoView({ behavior: 'smooth' }) as any;
+    };
+
 
     return (
         <div className='home-container'>
@@ -36,8 +37,20 @@ function Home() {
 
                     <Carousel data={airing?.data} />
                     <div ref={display}>
+
                         <div className='home-sub-container'>
                             <div>
+
+                                <Card
+                                    style={{
+                                        padding: "1rem",
+                                        backgroundColor: "rgba(3, 173, 99,0.8)",
+                                        margin: "3rem 1rem"
+                                    }
+                                    }
+                                >
+                                    <p> Enable <span style={{ color: "black", fontWeight: "bolder" }}>Add blocker</span> in your browser setting or use <span style={{ color: "black", fontWeight: "bolder" }}>Brave browser</span> to avoid add popup or redirects </p>
+                                </Card>
                                 <div className='home-btn-container'>
                                     <h2>Recently Updated</h2>
                                     <div>
@@ -73,7 +86,7 @@ function Home() {
                                                 marginRight: "1rem"
                                             }}
                                         >{"<"}</Button>}
-                                        {page !== airing?.pagination?.last_visible_page ? <Button
+                                        {anime?.hasNextPage? <Button
                                             onClick={
                                                 () => {
                                                     setPage(page + 1)
@@ -90,16 +103,16 @@ function Home() {
                             </div>
                             <div className='treading-con'>
                                 <GenreDisplay />
-                                <DisplayTop data={top?.results} type="Treading Anime" />
+                                <DisplayTop data={trending?.data} type="Top 10 Anime" />
                             </div>
                         </div>
 
                     </div>
 
+                    <Footer />
 
                 </div>
             }
-            <Footer />
         </div>
     );
 }
