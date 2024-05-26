@@ -1,15 +1,12 @@
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Carousel as AnimeSlider } from 'react-responsive-carousel';
 import { StringConvertFunction, converter } from '../../utils/helper';
-import Button from '../UI/Button';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import './index.css'; 
 
 
 const Carousel = ({ data }: any) => {
 
-const navigate = useNavigate();
 
 const componentRef = useRef<null | HTMLDivElement>(null)
 
@@ -54,12 +51,7 @@ const componentRef = useRef<null | HTMLDivElement>(null)
                                         <span >Description</span>
                                         {anime?.synopsis===null?<p>Watch The Latest Episode on Logo</p>:<p >{StringConvertFunction(anime?.synopsis,300)}</p>}
                                         </div>
-                                        <Button
-                                            onClick={() => { navigate(`/detail/${converter(anime?.url)}`, { state: anime }) }}
-
-                                            style={{ maxWidth: "9rem", padding: "0.5rem 0rem", marginTop: "1rem" }}
-                                        >Watch Now</Button>
-
+                                       
                                     </div>
 
                                 </div>

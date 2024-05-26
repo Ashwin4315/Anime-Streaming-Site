@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import useGetInfo from '../../hooks/useGetInfo';
-import { jikenProps } from '../../types';
+import { searchProps } from '../../types';
 import DisplayAnime from '../../components/displayAnime';
 import Loader from '../../components/loader';
 import Button from '../../components/UI/Button';
@@ -16,27 +16,19 @@ function Display() {
     const [url, seturl] = useState("")
     const [load, setload] = useState(false)
     const [page, setPage] = useState<number>(1)
-    const [anime, loading] = useGetInfo<jikenProps>(`${url}page=${page}`)
+    const [anime, loading] = useGetInfo<searchProps>(`${state}&page=${page}`)
 
 
-    useEffect(() => {
-        seturl(state)
-    }, [state])
-    useEffect(() => {
-        setload(true)
-        setTimeout(() => {
-            setload(false)
-        }, 1000)
-    }, [])
+
 
 
     return (
         <div className='detail-container'>
-            {load ? <Loader /> : loading ? <Loader /> :
+            {loading ? <Loader /> :
                 <div>
                     <div style={{ padding: "auto" }}>
 
-                        <DisplayAnime title={`${type} ${type === "Movies" ? "" : "Anime"}`} anime={anime?.data} />
+                        <DisplayAnime title={`${type} ${type === "Movies" ? "" : "Anime"}`} anime={anime?.anime} />
 
                     </div>
                     <div className='search-btn-container'>
@@ -49,7 +41,7 @@ function Display() {
                                 marginRight: "1rem"
                             }}
                         >{"<"}</Button>}
-                        {page !== anime?.pagination?.last_visible_page ? <Button
+                       <Button
                             onClick={
                                 () => {
                                     setPage(page + 1)
@@ -58,7 +50,7 @@ function Display() {
                             style={{
                                 minWidth: "10rem"
                             }}
-                        >{">"}</Button> : ""}
+                        >{">"}</Button> 
                     </div>
                 </div>
 

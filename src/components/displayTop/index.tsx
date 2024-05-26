@@ -1,10 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import "./index.css"
-import { converter } from "../../utils/helper";
 
 function DisplayTop({ data, type }: { data: any, type: string }) {
 
-    const navigate = useNavigate()
     return (
         <div className="popular-anime-card-container">
             <div className="popular-anime-card-title">
@@ -20,7 +17,6 @@ function DisplayTop({ data, type }: { data: any, type: string }) {
                             <div className="popular-anime-card-content">
                                 <div className="popular-anime-card-card-title">
                                     <h2
-                                        onClick={() => { navigate(`/detail/${shows?.attributes?.slug === undefined ? converter(shows?.url) : shows?.attributes?.slug}`, { state: shows }) }}
 
                                     >{shows?.attributes?.canonicalTitle === undefined ? shows.title : shows?.attributes?.canonicalTitle}</h2>
                                 </div>

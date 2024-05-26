@@ -53,7 +53,14 @@
 
 
 }
+.popular-anime-card-card-title h2:hover{
+    color: var(--primary-color);
 
+}
+.popular-anime-card-card-title h2:hover{
+    color: rgb(69, 219, 154);
+
+}
 
 
 .popular-anime-card-info{

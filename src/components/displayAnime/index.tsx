@@ -20,41 +20,24 @@ function DisplayAnime({ anime, title }: any) {
                     return (
                         <div key={index}
                             className="display-anime-card"
-                            onClick={() => { navigate(`/detail/${converter(animeShow?.url)}`, { state: animeShow }) }}
+                        onClick={() => { navigate(`/detail/${converter(animeShow?.id)}`, { state: animeShow }) }}
                         >
                             <div className="display-anime-img">
-                                <img src={animeShow?.images?.jpg?.image_url === undefined ? animeShow?.image : (animeShow?.images.jpg.image_url)} alt={animeShow?.title} />
+                                <img src={animeShow?.image} alt={animeShow?.anime} />
                             </div>
                             <div className="display-anime-content">
-                                <h3>{animeShow.title===""?StringConvertFunction(animeShow?.id, 30):StringConvertFunction(animeShow?.title, 30)}</h3>
-                                <div>{animeShow.episodes === undefined
-                                    ?
-                                    <section>{animeShow.episodeNumber === undefined ? "" :
-                                        <div
-                                        style={{display:"flex"  ,alignItems:"center"}}
-                                        >
-                                            <span
-                                                style={{ fontSize: "1.5rem", fontWeight: "bolder" }}
-                                                className="material-symbols-outlined">
-                                                playlist_play
-                                            </span>
-                                            <p>{animeShow.episodeNumber}</p>
-                                        </div>}
-                                    </section>
+                                <h3>{StringConvertFunction(animeShow?.anime, 30)}</h3>
 
-                                    :
-                                    <div className="display-search-con">
-                                        <p>{animeShow.type}</p>
-                                        <div style={{display:"flex" ,padding:" 0 0.5rem",alignItems:"center"}}><span
-                                            style={{ fontSize: "1.5rem", fontWeight: "bolder" }}
-                                            className="material-symbols-outlined">
-                                            playlist_play
-                                        </span><p>{animeShow.episodes}</p>
-                                        </div>
+
+                                <div className="display-search-con">
+                                    <div style={{ display: "flex", padding: " 0 0.5rem", alignItems: "center" }}><span
+                                        style={{ fontSize: "1.5rem", fontWeight: "bolder" }}
+                                        className="material-symbols-outlined">
+                                        playlist_play
+                                    </span><p>{animeShow.released}</p>
                                     </div>
-
-                                }
                                 </div>
+
                             </div>
                         </div>
                     )

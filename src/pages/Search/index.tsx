@@ -1,7 +1,7 @@
 import { useState, useEffect, useReducer, useRef } from 'react';
 import DisplayAnime from '../../components/displayAnime';
 import useGetAnime from '../../hooks/useGetInfo';
-import { jikenProps } from '../../types';
+import { searchProps } from '../../types';
 import Button from '../../components/UI/Button';
 import Loader from '../../components/loader';
 import Genre from '../../components/genre';
@@ -62,9 +62,9 @@ function Search() {
 
     const [inputSearch, setinputSearch] = useState<string>("")
     const [search, setSearch] = useState<string>("")
-    const [genre, setgenre] = useState<number[]>([])
-    const filterref = useRef<null|HTMLDivElement>( null);
-    const [filter, setfilter] = useState<{ genres: number[], type: string, status: string, rating: string, order: string, year: string } | null>(null)
+    const [genre, setgenre] = useState<string[]>([])
+    const filterref = useRef<null | HTMLDivElement>(null);
+    const [filter, setfilter] = useState<{ genres: string[], type: string, status: string, rating: string, order: string, year: string } | null>(null)
     const [page, setPage] = useState<number>(1)
     const [state, dispatch] = useReducer(filterReducer, {
         type: "",
@@ -74,6 +74,14 @@ function Search() {
         choose: ""
     });
 
+    console.log(filter)
+
+
+
+
+
+
+
     const inputSearchAnime = (e: React.ChangeEvent<HTMLInputElement>) => {
         setinputSearch(e.target.value)
     }
@@ -81,12 +89,12 @@ function Search() {
         e.preventDefault()
         setfilter({
             genres: [],
-            type: "",           
+            type: "",
             status: "",
             rating: "",
             order: "",
-            year: "",      
-         })
+            year: "",
+        })
         setSearch(inputSearch)
 
 
@@ -95,8 +103,9 @@ function Search() {
         e.preventDefault()
         setfilter({ genres: genre, type: state.type, status: state.status, rating: state.rated, order: state.choose, year: state.year })
 
+
     }
-    const getGenre = (gen: number[]) => {
+    const getGenre = (gen: string[]) => {
         setgenre(gen)
 
     }
@@ -109,11 +118,17 @@ function Search() {
     }, [])
 
     const handleClick = () => {
-        filterref.current?.scrollIntoView({behavior: 'smooth'}) as any;
-      };
+        filterref.current?.scrollIntoView({ behavior: 'smooth' }) as any;
+    };
 
 
-    const [anime, loading] = useGetAnime<jikenProps>(` https://api.jikan.moe/v4/anime?q=${search}&page=${page}&genres=${filter?.genres !== undefined ? filter?.genres?.toString() : ""}${filter?.type === undefined ? "" : filter?.type === "" ? "" : `&type=${filter?.type}`}${filter?.status === undefined ? "" : filter?.status === "" ? "" : `&status=${filter?.status}`}${filter?.rating === undefined ? "" : filter?.rating === "" ? "" : `&rating=${filter?.rating}`}${filter?.order === undefined ? "" : filter?.order === "" ? "" : `&order_by=${filter?.order}`}${filter?.year === undefined ? "" : filter?.year === "" ? "" : `&start_date=${filter?.year}-01-01`}`)
+
+    const [anime, loading] = useGetAnime<searchProps>(`http://localhost:3000/api/v1/getFilterAnime?search=${search}&page=${page}&genre=${filter?.genres !== undefined ? filter?.genres.toString():""}${filter?.type === undefined ? "" : filter?.type === "" ? "" : `&type=${filter?.type}`}${filter?.status === undefined ? "" : filter?.status === "" ? "" : `&status=${filter?.status}`}`)
+    //  console.log(`http://localhost:3000/api/v1/getFilterAnime?search=${search}&page=${page}&genre=${filter?.genres !== undefined ? filter?.genres.toString():""}${filter?.type === undefined ? "" : filter?.type === "" ? "" : `&type=${filter?.type}`}${filter?.status === undefined ? "" : filter?.status === "" ? "" : `&status=${filter?.status}`}`)
+
+
+
+
     return (
         <div className='search-container'>
             <div className='search-form-container'>
@@ -143,7 +158,7 @@ function Search() {
                 </form>
                 <form onSubmit={filterSubmit}>
                     <Card
-                        style={{ marginTop: "1.5rem",padding:"2rem 3%", flexDirection: "column", gap: "2rem" }}
+                        style={{ marginTop: "1.5rem", padding: "2rem 3%", flexDirection: "column", gap: "2rem" }}
                     >
                         <div className='search-filter-con'>
                             <section>
@@ -151,12 +166,16 @@ function Search() {
                                 <Select onset={getFilter} to="status" options={status} />
                             </section>
                             <section>
-                                <Select onset={getFilter} to="rated" options={rated} />
+                                {/* <Select onset={getFilter} to="rated" options={rated} /> */}
+
+
+
                                 <Select onset={getFilter} to="choose" options={choose} />
+                            
 
                             </section>
                             <section>
-                                <Select onset={getFilter} to="year" options={year} />
+                                {/* <Select onset={getFilter} to="year" options={year} /> */}
 
                             </section>
 
@@ -172,10 +191,9 @@ function Search() {
 
             </div>
             {loading ? <Loader /> :
-                <div className='search-results-container'ref={filterref}  >
-                    <DisplayAnime title={search === "" ? `Filter results ${anime?.pagination?.items?.total}` : `Results found ${anime?.pagination?.items?.total} for ${search}`} anime={anime?.data} />
-                   {anime?.pagination?.items?.total===0 ?<p style={{textAlign:"center",fontSize:"2rem",marginBottom:"5rem"}}>No result found</p> : ""}
-                    { anime?.pagination?.items?.total===0?"":<div className='search-btn-container'>
+                <div className='search-results-container' ref={filterref}  >
+                    <DisplayAnime anime={anime?.anime} />
+                    <div className='search-btn-container'>
                         {page === 0 ? "" : <Button
                             onClick={page === 1 ? () => { } : () => {
                                 setPage(page - 1)
@@ -186,7 +204,7 @@ function Search() {
                                 marginRight: "1rem"
                             }}
                         >{"<"}</Button>}
-                        {page !== anime?.pagination?.last_visible_page ? <Button
+                        <Button
                             onClick={
                                 () => {
                                     setPage(page + 1)
@@ -196,8 +214,8 @@ function Search() {
                             style={{
                                 minWidth: "10rem"
                             }}
-                        >{">"}</Button> : ""}
-                    </div>}
+                        >{">"}</Button>
+                    </div>
                 </div>
             }
         </div>

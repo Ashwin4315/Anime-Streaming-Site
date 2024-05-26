@@ -15,17 +15,24 @@ import Card from '../../components/UI/Card';
 
 function Home() {
 
-    const [url, seturl] = useState("https://api.consumet.org/anime/gogoanime/recent-episodes?type=1&")
-    const [selbtn, setselbtn] = useState(0)
-    const [page, setPage] = useState<number>(1)
+    const [url, seturl] = useState("http://localhost:3000/api/v1/getFilterAnime?language=sub")
+    const [page, setPage] = useState<number>(1);
+
+    const [selbtn, setselbtn] = useState(0);
+    
     const [airing, aloading] = useGetInfo<jikenProps>("https://api.jikan.moe/v4/seasons/now")
     const [trending] = useGetInfo<kitsu>("https://kitsu.io/api/edge/trending/anime?filter[status]=current&sort=popularityRank")
-    const [anime, alloading] = useGetInfo<searchProps>(`${url}page=${page}`)
+
+    const [anime, alloading] = useGetInfo<searchProps>(`${url}&page=${page}`)
+ 
+    console.log(anime)
+
     const display = useRef<null | HTMLDivElement>(null);
 
 
     const handleClick = () => {
-        display.current?.scrollIntoView({ behavior: 'smooth' }) as any;
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
     };
 
 
@@ -72,7 +79,8 @@ function Home() {
                                     </div>
                                 </div>
                                 <div >
-                                    <DisplayAnime title="" anime={anime?.results} />
+                                    
+                                    <DisplayAnime title="" anime={anime?.anime} />
 
                                     <div className='search-btn-container'>
                                         {page === 0 ? "" : <Button
@@ -86,7 +94,7 @@ function Home() {
                                                 marginRight: "1rem"
                                             }}
                                         >{"<"}</Button>}
-                                        {anime?.hasNextPage? <Button
+                                        {anime? <Button
                                             onClick={
                                                 () => {
                                                     setPage(page + 1)

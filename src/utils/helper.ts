@@ -2,14 +2,10 @@ export function converter(url: string): string {
     let Arr = url.split("/");
     let lenght = Arr.length
     let anime = Arr[lenght - 1];
-    const cconStr = anime.replace(/_-_/, "-")
-    const conStr = cconStr.replace(/____|___|__|_/g, "-").toLowerCase();
-    return conStr
+
+    return anime
 }
- export function subOrDub(id: string) {
-    let Arr = id.split("-dub")[0];
-    return Arr 
-     }
+
 
  export function searchConverter(url: string): string {
 
@@ -35,6 +31,40 @@ export function converter(url: string): string {
 }
 
 
+export const generateNumbersInRange=(range: string): number[] =>{
+    const [startStr, endStr] = range.split('-');
+    const start = parseInt(startStr);
+    const end = parseInt(endStr);
+    const numbers: number[] = [];
+
+    for (let i = start; i <= end; i++) {
+        numbers.push(i);
+    }
+
+    return numbers;
+}
+
+export const splitEpisodes =(episode: number): string[] =>{
+    const ranges: string[] = [];
+    let start: number = 1;
+    let end: number = 100;
+
+    while (start < episode) {
+        if (end >= episode) {
+            ranges.push(`${start}-${episode}`);
+        } else {
+            ranges.push(`${start}-${end}`);
+        }
+        start += 100;
+        end += 100;
+    }
+
+    return ranges;
+}
+
+
+
+
 export const StringConvertFunction = (str: string, limit: number): string => {
 
     let word
@@ -49,7 +79,3 @@ export const StringConvertFunction = (str: string, limit: number): string => {
 }
 
 
-export function isStreamsb(value) {
-    if(value.name==="Streamsb")
-    return value;
-  }

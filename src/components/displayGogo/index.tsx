@@ -19,23 +19,23 @@ function DisplayGogo({ anime, title }: any) {
         <div className={"display-gogo-container"} >
             <h2>{title}</h2>
             <div className={"display-gogo"} >
-                {anime?.map((animeShow: displaygogoProps, index: number) => {
+                {anime?.map((animeShow, index: number) => {
                     return (
                         <div 
                             key={index}
                             className="display-gogo-anime-card"
                             onClick={() => {
-                                 navigate(`/detail/${converter(animeShow.url)}`, { state: animeShow })
-                                 window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
+                                navigate(`/detail/${converter(animeShow?.id)}`, { state: animeShow })
+                                window.scrollTo({top: 0, left: 0, behavior: 'smooth'});
 
                                  }}
 
                         >
                             <div className="display-gogo-anime-img">
-                                <img src={animeShow?.image}  alt={animeShow?.title}/>
+                                <img src={animeShow?.image}  alt={animeShow?.anime}/>
                             </div>
                             <div className="display-gogo-anime-content">
-                                <h3>{animeShow?.title}</h3>
+                                <h3>{animeShow?.anime}</h3>
                             </div>
                         </div>
                     )

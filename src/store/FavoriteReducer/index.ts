@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { jikanInfo } from "../../types";
+import { favaprops } from "../../types";
 
 type favorite = {
-   data:jikanInfo[]
+   data:favaprops[]
 };
 
 const initialFavoriteState:favorite ={data:[]}
@@ -12,9 +12,9 @@ const initialFavoriteState:favorite ={data:[]}
   initialState: initialFavoriteState,
   reducers: {
   
-    add(state,action: PayloadAction<jikanInfo>) {
-        if (state?.data.find(anime=> anime?.mal_id ===undefined?anime?.id===action?.payload?.id:anime?.mal_id===action?.payload?.mal_id)) {
-            return {data:state?.data.filter(anime=>anime?.mal_id ===undefined? anime?.id !== action?.payload?.id:anime?.mal_id !== action?.payload?.mal_id )}
+    add(state,action: PayloadAction<favaprops>) {
+        if (state?.data.find(anime=> anime?.id===action?.payload?.id)) {
+            return {data:state?.data.filter(anime=>anime?.id !== action?.payload?.id)}
           }
           return {data:[...state.data,action.payload]}
 

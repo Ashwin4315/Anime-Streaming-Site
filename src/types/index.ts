@@ -1,33 +1,53 @@
 
 
 export type animeInfoProps = {
-    genres: string[],
-    episodes: { id: string, number: number, url: string }[],
-    id: string,
-    image: string,
-    title: string,
-    url: string,
-    releaseDate: string,
-    description: string,
-    subOrDub: string,
-    type: string,
-    status: string,
-    otherName: string,
-    totalEpisodes: number,
+    animeImage: {
+        image: string,
+        title: string
+    },
+    animeInfo: {
+        "Type:": string,
+        "Plot Summary:": string,
+        "Genre:": [string],
+        "Released:": string,
+        "Status:": string,
+        "Other name:": string
+    },
+    episodeCount: number
 }
 
+
 export type searchProps = {
-    currentPage: number,
-    hasNextPage: boolean,
-    results: [{
-        genres: string[],
-        id: string,
+
+    anime: [{
         image: string,
-        title: string,
-        url: string
+        id: string,
+        anime: string,
+        released: string,
     }]
 
 }
+export type favaprops = {
+
+        image: string,
+        id: string,
+        anime: string,
+        released: string,
+    }
+
+
+
+export type genreProp = {
+    status: string,
+    data: [{
+        name: string,
+        id: string
+    }
+
+    ]
+}
+
+
 export type filterdProps = {
     [key: string]: string
 
@@ -37,30 +57,25 @@ export type filterdProps = {
 
 export type SeverProps = {
 
-    name: string,
-    url: string
+    episodeName: string,
+    episodeCount: number,
+    streamlinks: [
+        {
+            link: string,
+            provider: string
+        }
 
+    ]
 }
 
+
 export type displayAnimeProps = {
-    genres: string[],
-    id: string,
-    type: string,
-    source: string,
-    episodes: number,
-    title: string,
-    url: string,
+
     image: string,
-    episodeNumber: number,
-    images: {
-        jpg: {
-            image_url: string,
-            small_image_url: string,
-            large_image_url: string
-        },
+    id: string,
+    anime: string,
+    released: string,
 
-
-    }
 }
 
 
